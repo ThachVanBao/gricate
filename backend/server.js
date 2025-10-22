@@ -1,4 +1,7 @@
 const express = require('express');
+const mongoose = require('mongoose'); // Import Mongoose
+const dotenv = require('dotenv');     // Import dotenv để đọc biến môi trường
+const cors = require('cors'); 
 const app = express();
 const PORT = 3000;
 
