@@ -2,12 +2,20 @@ const express = require('express');
 const mongoose = require('mongoose'); // Import Mongoose
 const dotenv = require('dotenv');     // Import dotenv để đọc biến môi trường
 const cors = require('cors'); 
+const userRoutes = require('./routes/user'); // đường dẫn tới file routes
 const app = express();
 const PORT = 3000;
 
 // Sử dụng middleware để parse (phân tích) JSON data từ request body
 // Điều này là cần thiết để xử lý dữ liệu gửi lên qua phương thức POST
-app.use(express.json());
+app.use(express.json()); // phải đặt trước
+
+app.use('/users', userRoutes); // gắn route trước khi listen
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 
 // ******************************************************
 // Dữ liệu giả định (thay thế bằng kết nối Database thực tế)
